@@ -1,38 +1,223 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap");
+::-moz-selection {
+  background-color: gray;
+  color: white;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+::selection {
+  background-color: gray;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  overflow: hidden;
+  font-family: 'Epilogue', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App {
+  width: 100vw;
+  height: 100vh;
 }
+
+canvas {
+  width: 100%;
+  height: 100%;
+  background-color: #272442;
+}
+
+.planetInfo-visible {
+  display: block;
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.planetInfo-visible h1 {
+  font-weight: bold;
+  margin: 5px 0px;
+}
+
+.planetInfo-visible h2 {
+  margin: 5px 0px;
+}
+
+.planetInfo-visible p {
+  color: #474747;
+}
+
+.planetInfo-hidden {
+  display: none;
+}
+
+.bottomPanel {
+  z-index: 50;
+  position: absolute;
+  bottom: 10px;
+  width: 300px;
+  margin-left: -150px;
+  text-align: center;
+  left: 50%;
+  background-color: white;
+  padding: 10px;
+}
+
+.bottomPanel h1 {
+  font-size: 1rem;
+}
+
+.appIcon {
+  display: block;
+  width: 60px;
+  height: 50px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 50;
+}
+
+.appIcon svg {
+  width: 60px;
+  height: 50px;
+  fill: white;
+  opacity: 0.3;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.appIcon svg:hover {
+  opacity: 0.6;
+}
+
+.appInfo {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  z-index: 50;
+  width: 300px;
+  background-color: white;
+  padding: 15px;
+}
+
+.appInfo h1 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 5px 10px;
+}
+
+.appInfo h2 {
+  font-size: 0.8rem;
+  color: #333333;
+}
+
+.appInfo-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.appInfo-enter-active {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
+.appInfo-enter-done {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
+.appInfo-exit {
+  opacity: 1;
+  background-color: white;
+}
+
+.appInfo-exit-active {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+  background-color: white;
+}
+
+.appInfo-exit-done {
+  display: none;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  background-color: blue;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.planetInfo {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  z-index: 50;
+  width: 300px;
+  background-color: white;
+  padding: 10px;
+}
+
+.planetInfo-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.planetInfo-enter-active {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
+.planetInfo-enter-done {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
+.planetInfo-exit {
+  opacity: 1;
+  background-color: white;
+}
+
+.planetInfo-exit-active {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+  background-color: white;
+}
+
+.planetInfo-exit-done {
+  display: none;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  background-color: blue;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+/*# sourceMappingURL=App.css.map */

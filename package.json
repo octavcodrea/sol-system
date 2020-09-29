@@ -10,9 +10,13 @@
     "@types/node": "^12.12.62",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "drei": "^1.5.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
+    "react-three-fiber": "^4.2.21",
+    "react-transition-group": "^4.4.1",
+    "three": "^0.120.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
@@ -35,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-transition-group": "^4.4.0"
   }
 }
