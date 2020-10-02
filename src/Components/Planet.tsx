@@ -12,7 +12,7 @@ interface PlanetProps{
 }
 
 const Planet = (props: PlanetProps) => {
-    let planetScale = props.propScale / 250;
+    let planetScale = props.propScale / 270;
     planetScale = (3 * Math.sqrt(planetScale) + 5) / 3;
 
     let coordX = ((Math.sqrt(Math.abs(props.propX)) + (0.4 * Math.abs(props.propX))) * 100);

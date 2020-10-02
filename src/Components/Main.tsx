@@ -179,9 +179,14 @@ class Main extends React.Component<MainProps, MainState>{
     ];
 
     moonArray: any[] = [
-        {sso:{name: "The Moon",
-            parameters: {diameter: 3400}},
-        data:[{px: 1.0135, py: 0.0001}]},
+        {sso:
+            {   name: "The Moon",
+                parameters: {diameter: 3400}
+            },
+        data:[{
+                px: 1.0135, py: 0.0001
+            }]
+        },
     ]
 
     fetchPlanet = (index: number, link: string, type: string) =>{
@@ -194,6 +199,7 @@ class Main extends React.Component<MainProps, MainState>{
                     default: this.planetsArray[index] = result; break;
                     case "planet": this.planetsArray[index] = result; break;
                     case "dwarfplanet": this.dwarfPlanetsArray[index] = result; break;
+                    case "moon": this.moonArray[index] = result; break;
                 }
                 
                 // console.log("result:",result);
@@ -209,7 +215,7 @@ class Main extends React.Component<MainProps, MainState>{
     }
 
     componentDidMount = () =>{
-        console.log("fetching . . .");
+        // console.log("fetching . . .");
     
         for (let i = 0; i<this.planetslist.length;i++){
             let targetURL = `https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=${this.planetslist[i]}&-type=planet&-ep=now&-tcoor=2&-observer=@sun&-mime=json`
@@ -225,7 +231,8 @@ class Main extends React.Component<MainProps, MainState>{
             setTimeout(() => this.fetchPlanet(k,targetURLDP, "dwarfplanet"), k*400);
         }
 
-        let moonURL = `https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=Moon&-ep=now&-tcoor=2&-observer=@sun&-mime=json`
+        let moonURL = `https://ssp.imcce.fr/webservices/miriade/api/ephemcc.php?-name=s:Moon&-ep=now&-tcoor=2&-observer=@sun&-mime=json`;
+        this.fetchPlanet(0,moonURL, "moon");
 
         // setTimeout(() => console.log("planetsArray:",this.planetsArray), 4000);
         setTimeout(() => this.setState({isLoaded: true,}), 4000);
@@ -233,7 +240,7 @@ class Main extends React.Component<MainProps, MainState>{
 
     formatPlanetsAndOrbits = () => {
         if(this.state.isLoaded === true){
-            console.log(['formatPlanets is doing its thing'])
+            // console.log(['formatPlanets is doing its thing'])
             let planetsJSXlist = this.planetsArray.concat(this.dwarfPlanetsArray);
             planetsJSXlist = planetsJSXlist.map((elem) => {
                 return(
@@ -261,9 +268,9 @@ class Main extends React.Component<MainProps, MainState>{
                     hoverIn={(e:any) => this.getInfoDiv("The Moon")}
                     hoverOut={(e:any) => this.closeInfoDiv()}
                     name={"The Moon"}
-                    propScale={this.moonArray[0].sso.parameters.diameter / 1000}
-                    propX={this.moonArray[0].data[0].px}
-                    propY={this.moonArray[0].data[0].py}
+                    propScale={this.moonArray[0].sso.parameters.diameter / 2000}
+                    propX={this.moonArray[0].data[0].px + 0.2}
+                    propY={this.moonArray[0].data[0].py - 0.07}
                 />
             )
 
