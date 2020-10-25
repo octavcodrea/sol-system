@@ -1,8 +1,8 @@
 import { group } from 'console';
 import * as THREE from 'three'
-import React, { Suspense, useRef } from 'react';
-import { Canvas,  useLoader, useFrame, extend, useThree, ReactThreeFiber } from 'react-three-fiber';
-import { DoubleSide, FrontSide } from 'three';
+import React  from 'react';
+// import { Canvas,  useLoader, useFrame, extend, useThree, ReactThreeFiber } from 'react-three-fiber';
+// import { DoubleSide, FrontSide } from 'three';
 
 interface OrbitProps{
     distX: number,
@@ -23,6 +23,8 @@ function calculateDistance(dx:number, dy:number):number{
 }
 
 const Orbit = (props: OrbitProps) =>{
+
+    // Creates a ring around the Sun (0,0) element. The size of the orbit is based on the planet's distance from the Sun.
 
     return(
         <mesh

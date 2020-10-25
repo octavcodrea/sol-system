@@ -12,6 +12,10 @@ interface PlanetProps{
 }
 
 const Planet = (props: PlanetProps) => {
+
+    //Renders a sphere at the coords obtained from the ICMEC API.
+    //Averages out the planet scale for easier visualization.
+
     let planetScale = props.propScale / 270;
     planetScale = (3 * Math.sqrt(planetScale) + 5) / 3;
 

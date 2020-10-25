@@ -67,6 +67,10 @@ const CameraControls = () => {
 };
 
 class Main extends React.Component<MainProps, MainState>{
+
+    //Fetches data from the ICMEC API.
+    //Maps out an array of objects with the planet data and renders them in the scene.
+    
     constructor(props: MainProps){
         super(props);
 
